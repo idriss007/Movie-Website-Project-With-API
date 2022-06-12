@@ -17,18 +17,19 @@ app.get("/", function(req, res) {
   res.render("home");
 });
 
-app.get("/test", function(req, res) {
-  res.render("test");
-});
-
 app.post("/", function(req, res) {
 
   const query = req.body.movieName;
   const url = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + query;
 
   https.get(url, function(response) {
+    let result = "";
+
     response.on("data", function(data){
-      const moviesData = JSON.parse(data);
+      result += data;
+    });
+    response.on("end", function() {
+      const moviesData = JSON.parse(result);
       const movies = moviesData.results;
       const posterUrl = "https://image.tmdb.org/t/p/w500";
       const movieUrl = "https://www.themoviedb.org/movie/";
@@ -38,7 +39,7 @@ app.post("/", function(req, res) {
         posterUrl: posterUrl,
         movieUrl: movieUrl
       });
-    });
+    })
   });
 
 });

@@ -1,9 +1,23 @@
 <%- include("partials/header"); -%>
 
-<form class="searchTab" action="/" method="post">
-  <label class="movie-search-query" for="nameInput">Movie Name: </label>
-  <input id="nameInput" type="text" name="movieName">
-  <button class="btn btn-sm btn-primary" type="submit">Search</button>
-</form>
+  <div class="searchSection">
+
+    <form class="searchTab" action="/" method="post">
+
+      <div class="form-group">
+        <label class="whiteLabel" for="movieNameInput">Movie Name</label>
+        <input id="movieNameInput" class="form-control" type="text" name="movieName">
+      </div>
+      <button class="btn btn-primary" type="submit">Search</button>
+
+    </form>
+
+    <div class="buttonsContainer">
+      <a class="homeLinks" href="/register">Register</a>
+      <a class="homeLinks" href="/login">Login</a>
+    </div>
+
+
+  </div>
 
 <%- include("partials/footer"); -%>
